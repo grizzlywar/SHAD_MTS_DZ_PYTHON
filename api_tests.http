@@ -1,0 +1,81 @@
+###
+# Создаем книгу (POST /api/v1/books/)
+POST http://localhost:8000/api/v1/books/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "Clean Code",
+    "author": "Robert Dawn",
+    "count_pages": 350,
+    "year": 2024,
+    "seller_id": 1
+}
+
+###
+
+# Получаем список книг (GET /api/v1/books/)
+GET http://localhost:8000/api/v1/books/ HTTP/1.1
+
+###
+
+# Получаем одну книгу по её ИД (GET /api/v1/books/1)
+GET http://localhost:8000/api/v1/books/1 HTTP/1.1
+
+###
+
+# Удаляем книгу (DELETE /api/v1/books/1)
+DELETE http://localhost:8000/api/v1/books/1 HTTP/1.1
+
+###
+
+# Обновляем поля в данных о книге (PUT /api/v1/books/1)
+# Обратите внимание, что в данном запросе поле seller_id не обновляется
+PUT http://localhost:8000/api/v1/books/1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "Clean Code",
+    "author": "Robert Martin",
+    "year": 2022,
+    "pages": 310
+}
+
+
+###
+# 1) POST /api/v1/seller – регистрация нового продавца
+POST http://localhost:8000/api/v1/seller HTTP/1.1
+Content-Type: application/json
+
+{
+    "first_name": "John",
+    "last_name": "Doe",
+    "e_mail": "john.doe@example.com",
+    "password": "securepassword"
+}
+
+###
+
+# 2) GET /api/v1/seller – получение списка всех продавцов (пароль не возвращается)
+GET http://localhost:8000/api/v1/seller HTTP/1.1
+
+###
+
+# 3) GET /api/v1/seller/1 – получение данных о конкретном продавце с его книгами
+GET http://localhost:8000/api/v1/seller/1 HTTP/1.1
+
+###
+
+# 4) PUT /api/v1/seller/1 – обновление данных о продавце (без изменения книг и пароля)
+PUT http://localhost:8000/api/v1/seller/1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "first_name": "Jane",
+    "last_name": "Doe",
+    "e_mail": "jane.doe@example.com"
+}
+
+###
+
+# 5) DELETE /api/v1/seller/1 – удаление продавца (и всех его книг)
+DELETE http://localhost:8000/api/v1/seller/1 HTTP/1.1
